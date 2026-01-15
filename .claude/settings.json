@@ -1,0 +1,14 @@
+{
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "powershell -NoProfile -Command \"function Show-Tree { param($Path = '.', $Indent = '', $Depth = 0, $MaxDepth = 3); if ($Depth -ge $MaxDepth) { return }; Get-ChildItem -Path $Path -Force | Where-Object { $_.Name -notmatch '^(node_modules|\\.next|\\.git|bun\\.lockb)$' } | ForEach-Object { $isDir = $_.PSIsContainer; $prefix = if ($isDir) { '[D] ' } else { '    ' }; Write-Host \\\"$Indent$prefix$($_.Name)\\\"; if ($isDir) { Show-Tree -Path $_.FullName -Indent \\\"$Indent    \\\" -Depth ($Depth + 1) -MaxDepth $MaxDepth } } }; Write-Host '=== Project Structure ===' -ForegroundColor Cyan; Write-Host ''; Show-Tree -Path $env:CLAUDE_PROJECT_DIR -MaxDepth 3\""
+          }
+        ]
+      }
+    ]
+  }
+}
