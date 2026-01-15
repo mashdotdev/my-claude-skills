@@ -1,0 +1,23 @@
+{
+  "name": "gsap-animations",
+  "version": "1.0.0",
+  "description": "Create GSAP animations with ScrollTrigger, SplitText, and Lenis smooth scrolling in Next.js",
+  "author": "Your Name",
+  "repository": "https://github.com/yourusername/my-claude-skills",
+  "tags": ["gsap", "animations", "nextjs", "scrolltrigger", "lenis"],
+  "allowedTools": ["Read", "Write", "Edit", "Glob", "Grep"],
+  "entrypoint": "SKILL.md",
+  "supportingDocs": [
+    "RECIPES.md",
+    "SCROLLTRIGGER.md",
+    "DRAGGABLE.md",
+    "MORPHSVG.md"
+  ],
+  "requirements": {
+    "gsap": "^3.14.0",
+    "@gsap/react": "^2.0.0",
+    "lenis": "^1.0.0",
+    "next": "^16.0.0",
+    "react": "^19.0.0"
+  }
+}

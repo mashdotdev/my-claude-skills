@@ -1,0 +1,39 @@
+{
+  "name": "@yourusername/claude-skills",
+  "version": "1.0.0",
+  "description": "Claude Code skills collection for GSAP animations and more",
+  "main": "install-skill.js",
+  "bin": {
+    "install-claude-skill": "./install-skill.js"
+  },
+  "files": [
+    ".claude/skills/**/*",
+    "install-skill.js",
+    "README.md"
+  ],
+  "scripts": {
+    "install-skill": "node install-skill.js"
+  },
+  "keywords": [
+    "claude-code",
+    "claude",
+    "skills",
+    "gsap",
+    "animations",
+    "nextjs",
+    "scrolltrigger"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/my-claude-skills.git"
+  },
+  "author": "Your Name",
+  "license": "MIT",
+  "peerDependencies": {
+    "gsap": "^3.14.0",
+    "@gsap/react": "^2.0.0"
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  }
+}
