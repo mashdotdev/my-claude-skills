@@ -251,3 +251,5 @@ src/components/
 
 - [RECIPES.md](RECIPES.md) - Extended animation recipes
 - [SCROLLTRIGGER.md](SCROLLTRIGGER.md) - Advanced ScrollTrigger patterns
+- [DRAGGABLE.md](DRAGGABLE.md) - Draggable plugin for drag interactions
+- [MORPHSVG.md](MORPHSVG.md) - MorphSVG plugin for shape morphing
