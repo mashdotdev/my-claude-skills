@@ -137,6 +137,7 @@ useGSAP(() => {
 ## Common Animation Recipes
 
 ### Fade In On Scroll
+
 ```tsx
 gsap.from(elementRef.current, {
   opacity: 0,
@@ -149,6 +150,7 @@ gsap.from(elementRef.current, {
 ```
 
 ### Parallax Image
+
 ```tsx
 gsap.to(imageRef.current, {
   yPercent: -20,
@@ -163,6 +165,7 @@ gsap.to(imageRef.current, {
 ```
 
 ### Staggered List Reveal
+
 ```tsx
 gsap.from(".list-item", {
   opacity: 0,
@@ -176,6 +179,7 @@ gsap.from(".list-item", {
 ```
 
 ### Scale + Blur Transition
+
 ```tsx
 tl.to(".element", {
   scale: 0.9,
@@ -185,6 +189,7 @@ tl.to(".element", {
 ```
 
 ### Horizontal Scroll Section
+
 ```tsx
 useGSAP(() => {
   const sections = gsap.utils.toArray<HTMLElement>(".panel");
@@ -253,3 +258,4 @@ src/components/
 - [SCROLLTRIGGER.md](SCROLLTRIGGER.md) - Advanced ScrollTrigger patterns
 - [DRAGGABLE.md](DRAGGABLE.md) - Draggable plugin for drag interactions
 - [MORPHSVG.md](MORPHSVG.md) - MorphSVG plugin for shape morphing
+- [VIDEOONSCROLLGSAP.md](VIDEOONSCROLLGSAP.md) - Video scroll-driven animations with GSAP

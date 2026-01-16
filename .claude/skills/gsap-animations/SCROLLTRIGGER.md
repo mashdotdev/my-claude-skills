@@ -208,6 +208,30 @@ ScrollTrigger.create({
 });
 ```
 
+### Video Scrubbing with Progress
+```tsx
+// Sync video playback to scroll progress
+ScrollTrigger.create({
+  trigger: sectionRef.current,
+  start: "top top",
+  end: "bottom top",
+  pin: true,
+  scrub: 1,
+  onUpdate: (self) => {
+    const video = videoRef.current;
+    if (video && video.duration) {
+      video.currentTime = video.duration * self.progress;
+    }
+  },
+});
+```
+
+**Important for video:**
+- Always check `video.duration` exists before setting `currentTime`
+- Use `scrub: 1` (not `true`) for smoother playback
+- Set `preload="auto"` on video element
+- Pause video initially (see VIDEOONSCROLLGSAP.md)
+
 ### Direction Detection
 ```tsx
 ScrollTrigger.create({

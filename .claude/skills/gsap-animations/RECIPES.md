@@ -3,6 +3,7 @@
 ## Text Animations
 
 ### Character Cascade (Typewriter Feel)
+
 ```tsx
 const split = SplitText.create(textRef.current, { type: "chars" });
 
@@ -19,6 +20,7 @@ gsap.from(split.chars, {
 ```
 
 ### Word-by-Word Reveal (Paragraph)
+
 ```tsx
 const split = SplitText.create(textRef.current, {
   type: "words",
@@ -39,6 +41,7 @@ gsap.from(split.words, {
 ```
 
 ### Line-by-Line Reveal
+
 ```tsx
 const split = SplitText.create(textRef.current, {
   type: "lines",
@@ -54,6 +57,7 @@ gsap.from(split.lines, {
 ```
 
 ### Scramble Text Effect
+
 ```tsx
 gsap.to(textRef.current, {
   duration: 1,
@@ -68,6 +72,7 @@ gsap.to(textRef.current, {
 ## Image & Media Animations
 
 ### Image Reveal with Clip Path
+
 ```tsx
 gsap.from(imageRef.current, {
   clipPath: "inset(0 100% 0 0)",
@@ -77,6 +82,7 @@ gsap.from(imageRef.current, {
 ```
 
 ### Ken Burns Effect
+
 ```tsx
 gsap.fromTo(imageRef.current,
   { scale: 1 },
@@ -91,6 +97,7 @@ gsap.fromTo(imageRef.current,
 ```
 
 ### Image Zoom on Scroll
+
 ```tsx
 gsap.fromTo(imageRef.current,
   { scale: 1.5 },
@@ -106,9 +113,92 @@ gsap.fromTo(imageRef.current,
 );
 ```
 
+### Video Background with Text Overlay
+
+```tsx
+// Darkened video background with animated text overlay
+return (
+  <section className="relative h-screen w-full overflow-hidden">
+    {/* Video with brightness filter */}
+    <video
+      ref={videoRef}
+      src="/video.mp4"
+      className="absolute inset-0 w-full h-full object-cover brightness-[0.4]"
+      autoPlay
+      loop
+      muted
+      playsInline
+    />
+
+    {/* Gradient overlay for better text contrast */}
+    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
+
+    {/* Content */}
+    <div className="relative z-10 h-full flex items-end">
+      <div className="p-16">
+        <h1 className="text-white text-8xl font-bold">
+          YOUR TITLE
+        </h1>
+      </div>
+    </div>
+  </section>
+);
+```
+
+**Brightness variations:**
+
+- `brightness-[0.3]` - Very dark (70% darker)
+- `brightness-50` - Medium dark (50% darker)
+- `brightness-75` - Subtle dark (25% darker)
+
+**Overlay variations:**
+
+- `bg-black/30` - Simple dark overlay
+- `bg-gradient-to-t from-black/60 to-transparent` - Bottom-heavy gradient
+- `bg-gradient-to-b from-black/40 via-transparent to-black/40` - Top and bottom vignette
+
+### Scroll-Synced Video Background
+
+```tsx
+// Video that scrubs through on scroll with overlaid content
+useGSAP(() => {
+  const video = videoRef.current;
+  if (!video) return;
+
+  ScrollTrigger.create({
+    trigger: sectionRef.current,
+    start: "top top",
+    end: "bottom top",
+    pin: true,
+    scrub: 1,
+    onUpdate: (self) => {
+      if (video.duration) {
+        video.currentTime = video.duration * self.progress;
+      }
+    },
+  });
+}, []);
+
+return (
+  <section ref={sectionRef} className="relative h-screen">
+    <video
+      ref={videoRef}
+      src="/video.mp4"
+      className="absolute inset-0 w-full h-full object-cover brightness-50"
+      muted
+      playsInline
+      preload="auto"
+    />
+    <div className="absolute inset-0 bg-black/20" />
+    {/* Your content here */}
+  </section>
+);
+```
+
 ## Page Transitions
 
 ### Overlay Reveal
+
 ```tsx
 // Animate overlay to reveal content
 gsap.to(overlayRef.current, {
@@ -119,6 +209,7 @@ gsap.to(overlayRef.current, {
 ```
 
 ### Split Screen Reveal
+
 ```tsx
 const tl = gsap.timeline();
 
@@ -130,6 +221,7 @@ tl.to(".left-panel", { xPercent: -100, duration: 1 }, 0)
 ## Scroll-Based Animations
 
 ### Progress Bar
+
 ```tsx
 gsap.to(progressRef.current, {
   scaleX: 1,
@@ -144,6 +236,7 @@ gsap.to(progressRef.current, {
 ```
 
 ### Sticky Header Transform
+
 ```tsx
 ScrollTrigger.create({
   start: "top -80",
@@ -153,6 +246,7 @@ ScrollTrigger.create({
 ```
 
 ### Snap Scrolling
+
 ```tsx
 gsap.utils.toArray<HTMLElement>(".section").forEach((section) => {
   ScrollTrigger.create({
@@ -168,6 +262,7 @@ gsap.utils.toArray<HTMLElement>(".section").forEach((section) => {
 ## Interactive Animations
 
 ### Hover Magnetic Effect
+
 ```tsx
 const handleMouseMove = (e: MouseEvent) => {
   const { left, top, width, height } = element.getBoundingClientRect();
@@ -183,6 +278,7 @@ const handleMouseLeave = () => {
 ```
 
 ### Button Press Effect
+
 ```tsx
 gsap.to(buttonRef.current, {
   scale: 0.95,
@@ -192,6 +288,7 @@ gsap.to(buttonRef.current, {
 ```
 
 ### Cursor Follower
+
 ```tsx
 useGSAP(() => {
   const cursor = cursorRef.current;
@@ -213,6 +310,7 @@ useGSAP(() => {
 ## 3D Transforms
 
 ### Card Flip
+
 ```tsx
 const tl = gsap.timeline({ paused: true });
 
@@ -226,6 +324,7 @@ tl.to(cardRef.current, {
 ```
 
 ### Perspective Tilt on Hover
+
 ```tsx
 const handleMouseMove = (e: MouseEvent) => {
   const { left, top, width, height } = cardRef.current!.getBoundingClientRect();
